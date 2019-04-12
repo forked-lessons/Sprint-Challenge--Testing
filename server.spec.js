@@ -33,6 +33,16 @@ describe('the route handlers', () => {
           console.log(err);
         });
     });
+    it('returns an array', () => {
+      request(server)
+        .get('/games')
+        .then(res => {
+          expect(res.body[0]).toEqual({ games: [] });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    });
   });
   describe('post request', () => {
     const body = {
@@ -53,9 +63,14 @@ describe('the route handlers', () => {
         });
     });
     it('responds with 201', () => {
+      const game1 = {
+        title: 'Game',
+        genre: 'test',
+        releaseYear: 20090
+      };
       request(server)
         .post('/games/add-game')
-        .send(body)
+        .send(game1)
         .then(res => {
           expect(res.status).toBe(201);
         })
