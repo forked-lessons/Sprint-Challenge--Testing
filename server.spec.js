@@ -27,7 +27,7 @@ describe('the route handlers', () => {
       request(server)
         .get('/games')
         .then(res => {
-          expect(response.type).toMatch(/json/i);
+          expect(res.type).toMatch(/json/i);
         })
         .catch(err => {
           console.log(err);
