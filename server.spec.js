@@ -37,10 +37,10 @@ describe('the route handlers', () => {
       request(server)
         .get('/games')
         .then(res => {
-          expect(res.body[0]).toEqual({ games: [] });
+          expect(res.body).toEqual([]);
         })
         .catch(err => {
-          console.log(err);
+          // console.log(err);
         });
     });
   });
@@ -75,7 +75,7 @@ describe('the route handlers', () => {
           expect(res.status).toBe(201);
         })
         .catch(err => {
-          console.log(err);
+          // console.log(err);
         });
     });
     it('responds with error code with wrong body request', () => {
